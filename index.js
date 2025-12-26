@@ -1,24 +1,20 @@
-/*import http from "http"
-
-const server = http.createServer((request,response)=>{
-    response.end("Hola mundo!!!!");
-})
-
-const port= 8080;
-
-server.listen(port,()=>{
-    console.log("servido activo" + port )
-})*/
 
 import express from "express"
+import cartsRouter from "./carts.js"
+import productosRouter from "./productos.js"
 
-const app = express();
-const port= 8080 ;
+const app= express()
+const port= 8080;
+
+app.use(express.json());
+
+app.use("/api/carts", cartsRouter);
+app.use("/api/productos", productosRouter);
 
 app.get("/",(request,response)=>{
-    response.send("hola mundo");
+    response.send("hola vida");
 })
 
-app.listen(port, () =>{
-   console.log("servidor activo:" + port)
-})
+app.listen(port, ()=>{
+    console.log("servidor funcina")
+});
